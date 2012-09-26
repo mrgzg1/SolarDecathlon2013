@@ -18,11 +18,14 @@ from tornadio2 import SocketConnection, TornadioRouter, SocketServer, event, gen
 from tornado.options import define, options
 define("port", default=8000, help="run on the given port", type=int)
 define("address", default="0.0.0.0", help="run on the given port", type=int)
+define("miniserver_address", default="0.0.0.0", help="this is the port where the miniserver is running", type=int)
 define("debug", default=0, help="setdebug option 0= false, 1 = true(default)", type=int)
+
+global socketServer
 
 class SocketIOHandler(tornado.web.RequestHandler):
     def get(self):
-        self.render('./socket.io.js')
+        self.render('../socket.io.js')
 
 class IndexHandler(tornado.web.RequestHandler):
     def get(self):
@@ -31,11 +34,11 @@ class IndexHandler(tornado.web.RequestHandler):
 class ToggleSample(tornado.web.RequestHandler):
     def get(self):
         client = tornado.httpclient.HTTPClient()
-        req = tornado.httpclient.HTTPRequest('http://admin:admin@192.168.88.102/dev/sps/io/Pushbutton%20Living%20Room/On',method="GET")
+        req = tornado.httpclient.HTTPRequest('http://admin:admin@'+options.miniserver_address+'/dev/sps/io/Pushbutton%20Living%20Room/On',method="GET")
         response = client.fetch(req)
         logging.error(response)
         time.sleep(0.05)
-        req = tornado.httpclient.HTTPRequest('http://admin:admin@192.168.88.102/dev/sps/io/Pushbutton%20Living%20Room/Off',method="GET")
+        req = tornado.httpclient.HTTPRequest('http://admin:admin@'+options.miniserver_address+'/dev/sps/io/Pushbutton%20Living%20Room/Off',method="GET")
         response = client.fetch(req)  
         logging.error(response)
         self.write(str(response))
@@ -43,29 +46,28 @@ class ToggleSample(tornado.web.RequestHandler):
 class EchoHandler(tornado.web.RequestHandler):
     def get(self):
         text = self.get_argument('text')
+        global socketServer
+        SocketIO_middleware(text)
         logging.error(text)
 
-class MultiplexedSocket(SocketConnection):
-    def on_open(self):
-        pass
+def SocketIO_middleware(data):
+    global live_clients
+    for each in live_clients:
+        each.emit('echo',data)
 
-    def on_close(self):
-        pass
-
-    @event('event_1')
-    def event_1_handler(self, arg1, arg2):
-        self.emit('return_event', arg1, arg2)
 
 class RootSocketConnection(SocketConnection):
-    #authentication works in multiplexed connection
-    #to authenticated pass the cookie data to the 'auth_user' function in SocketMixin
-    __endpoints__ = {   '/events' : MultiplexedSocket,
-                    }
+    global live_clients
+    live_clients = []  #list that maintains list of live users
     def on_open(self, data):
-        pass
+        global live_clients
+        logging.error('Root Socket Opened')
+        live_clients.append(self)
 
     def on_close(self):
-        pass
+        global live_clients
+        logging.error('Root Socket Closed')
+        #live_clients.remove(self)
 
     @event('event_1')
     def event_1_handler(self, arg1, arg2):
@@ -82,7 +84,6 @@ class Application(tornado.web.Application):
             socket_io_port = options.port,
             enabled_protocols=['websocket', 'xhr-multipart', 'xhr-polling'],
         )
-        #TODO: seperate out all the handlers to all the files and aggregate them here.
         handlers = [
             (r"/", IndexHandler),
             (r"/toggleSample", ToggleSample),
@@ -91,7 +92,7 @@ class Application(tornado.web.Application):
 
             (r"/socket.io.js", SocketIOHandler),
         ]
-        #change to Root Socket handler once multiplexed auth is determined
+        global socketServer
         socketServer = TornadioRouter(RootSocketConnection, settings)
         handlers.extend(socketServer.urls)
         tornado.web.Application.__init__(self, handlers, **settings)
