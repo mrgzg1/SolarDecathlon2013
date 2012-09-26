@@ -7,7 +7,6 @@ import tornado.web
 import urllib
 import json
 import time
-import site
 
 import os
 import logging
@@ -21,10 +20,6 @@ define("address", default="0.0.0.0", help="run on the given port", type=int)
 define("miniserver_address", default="0.0.0.0", help="this is the port where the miniserver is running", type=int)
 define("debug", default=0, help="setdebug option 0= false, 1 = true(default)", type=int)
 
-# site.addsitedir adds this directory to sys.path then scans for .pth files
-# and adds them to the path too.
-base_dir = os.path.dirname(os.path.abspath(__file__))
-site.addsitedir(os.path.join(base_dir, 'third_party'))
 
 #variable that holds on to all the live connections
 global socketServer
