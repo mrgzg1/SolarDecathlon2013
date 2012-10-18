@@ -17,12 +17,9 @@ from tornadio2 import SocketConnection, TornadioRouter, SocketServer, event, gen
 from tornado.options import define, options
 define("port", default=8000, help="run on the given port", type=int)
 define("address", default="0.0.0.0", help="run on the given port", type=int)
-define("miniserver_address", default="0.0.0.0", help="this is the port where the miniserver is running", type=int)
+define("miniserver_address", default="192.168.88.10", help="this is the port where the miniserver is running", type=int)
 define("debug", default=0, help="setdebug option 0= false, 1 = true(default)", type=int)
 
-
-#variable that holds on to all the live connections
-global socketServer
 
 class SocketIOHandler(tornado.web.RequestHandler):
     def get(self):
@@ -35,11 +32,11 @@ class IndexHandler(tornado.web.RequestHandler):
 class ToggleSample(tornado.web.RequestHandler):
     def get(self):
         client = tornado.httpclient.HTTPClient()
-        req = tornado.httpclient.HTTPRequest('http://admin:admin@'+options.miniserver_address+'/dev/sps/io/Pushbutton%20Living%20Room/On',method="GET")
+        req = tornado.httpclient.HTTPRequest('http://admin:admin@'+options.miniserver_address+'/dev/sps/io/BreadButton2/On',method="GET")
         response = client.fetch(req)
         logging.error(response)
         time.sleep(0.05)
-        req = tornado.httpclient.HTTPRequest('http://admin:admin@'+options.miniserver_address+'/dev/sps/io/Pushbutton%20Living%20Room/Off',method="GET")
+        req = tornado.httpclient.HTTPRequest('http://admin:admin@'+options.miniserver_address+'/dev/sps/io/BreadButton2/Off',method="GET")
         response = client.fetch(req)  
         logging.error(response)
         self.write(str(response))
@@ -93,7 +90,6 @@ class Application(tornado.web.Application):
 
             (r"/socket.io.js", SocketIOHandler),
         ]
-        global socketServer
         socketServer = TornadioRouter(RootSocketConnection, settings)
         handlers.extend(socketServer.urls)
         tornado.web.Application.__init__(self, handlers, **settings)
