@@ -13,12 +13,12 @@ function drawFloorPlan() {
  	/**
  	 * Declare the room shapes and define the shape
  	 */
-	var office =  paper.rect(7.649,420.289,234.119,186.509,undefined,undefined).attr({"fill": "#3E3E3E", "stroke": "#000000", "stroke-width": 0, "opacity": 0.4, 'stroke-opacity':'0'});
-	var bathroom =  paper.rect(353.063,362.191,105.048,159.005,undefined,undefined).attr({"fill": "#3E3E3E", "stroke": "#000000", "stroke-width": 0, "opacity": 0.4, 'stroke-opacity':'0'});
+	var office =  paper.rect(7.649,420.289,234.119,186.509).attr({"fill": "#3E3E3E", "stroke": "#000000", "stroke-width": 0, "opacity": 0.4, 'stroke-opacity':'0'});
+	var bathroom =  paper.rect(353.063,362.191,105.048,159.005).attr({"fill": "#3E3E3E", "stroke": "#000000", "stroke-width": 0, "opacity": 0.4, 'stroke-opacity':'0'});
 	var livingroom = paper.path('M 241.8 128.9 L 230.2 128.9 L 230.2 8.9 L 7.6 8.9 L 7.6 128.9 L 7.6 420.3 L 241.8 420.3 L 241.8 128.9').attr({"fill": "#3E3E3E", "stroke": "#000000", "stroke-width": 0, "opacity": 0.4, 'stroke-opacity':'0'}); 
-	var bedroom = paper.rect(241.769,521.196,216.343,204.668,undefined,undefined).attr({"fill": "#3E3E3E", "stroke": "#000000", "stroke-width": 0, "opacity": 0.4, 'stroke-opacity':'0'});
-	var hall =  paper.rect(241.155,361.281,112.799,159.916,undefined,undefined).attr({"fill": "#3E3E3E", "stroke": "#000000", "stroke-width": 0, "opacity": 0.4, 'stroke-opacity':'0'});
-	var kitchen =  paper.rect(241.155,128.944,216.956,233.247,undefined,undefined).attr({"fill": "#3E3E3E", "stroke": "#000000", "stroke-width": 0, "opacity": 0.4, 'stroke-opacity':'0'});
+	var bedroom = paper.rect(241.769,521.196,216.343,204.668).attr({"fill": "#3E3E3E", "stroke": "#000000", "stroke-width": 0, "opacity": 0.4, 'stroke-opacity':'0'});
+	var hall =  paper.rect(241.155,361.281,112.799,159.916).attr({"fill": "#3E3E3E", "stroke": "#000000", "stroke-width": 0, "opacity": 0.4, 'stroke-opacity':'0'});
+	var kitchen =  paper.rect(241.155,128.944,216.956,233.247).attr({"fill": "#3E3E3E", "stroke": "#000000", "stroke-width": 0, "opacity": 0.4, 'stroke-opacity':'0'});
 	/**
  	* Declare the outside shapes which will not be clickable
  	*/
