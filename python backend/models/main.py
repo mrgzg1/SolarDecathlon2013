@@ -4,6 +4,8 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.ext.hybrid import Comparator, hybrid_property, hybrid_method
 from sqlalchemy.sql.expression import func
 
+import logging
+
 Base = declarative_base()
 DB_ECHO = False
 
@@ -51,7 +53,17 @@ class Device(Base, JSONSerializable):
 
     def add_value(self, value):
         '''adds the passed in value to the associated device's log this way there is no need for us to even touch the log table'''
-        log_row = Log(value, self.id)
+
+        #sanity check
+        if type(value) != str:
+            return False
+
+        #if self is not assigned id yet then this can generate exception
+        try:
+            log_row = Log(value, self.id)
+        except:
+            logging.error("The id is probably not defined for the current element")
+            return False
 
         self.last_update = log_row.timestamp
         self.current_val = value
@@ -65,19 +77,38 @@ class Device(Base, JSONSerializable):
     def add_values(self, values):
         ''' same function as add_value just the difference is that you can add multiple values using this function'''
         #this function can be optimized, currently each values is inserted individually SQLAlchemy API supports inserting many at a time
+        #sanity check
         if type(values) != list:
             return False
         for each in values:
-            if not add_value(each):
+            if not self.add_value(each):
                 return False
         return True
 
-    def get_values(self, n=0):
+    def get_values(self, page=0):
         '''the function is used to paginate the data from the log table of the relevant device
-        n is the page number of the values you want returns the value of page 0 by default'''
+        page is the page number of the values you want returns the value of page 0 by default'''
         #we could define set of default values per page for each deivce based on the device
+        if page < 0: return []
+        values_per_page = 1
+        all_values = self.get_all_values()
+        
+        #sanity check to make sure that page values don't go over what is there in the store
+        if page*values_per_page > len(all_values):
+            return []
+
+        ret_vals = all_values[0+1*page,0+1*page+values_per_page]
+        return ret_vals
+
+    def get_all_values(self):
+        #query the db to get all the values
         session = Backend.instance().get_session()
-        session.query
+        try:
+            query = session.query(Log).filter(Log.device_id == self.id)
+            values = query.all()
+        except:
+            return []
+        return values
 
     def json(self):
         '''just a json wrapper function for the table row'''
