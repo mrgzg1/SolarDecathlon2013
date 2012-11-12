@@ -1,5 +1,3 @@
-import sha
-
 from sqlalchemy import create_engine, Sequence, Table, Column, ForeignKey, DateTime, Enum, Boolean, Integer, Integer, String, Text
 from sqlalchemy.orm import relationship, backref, scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
@@ -10,6 +8,7 @@ Base = declarative_base()
 DB_ECHO = False
 
 class JSONSerializable:
+    '''just for safety, although the only two tables in this file has the json function defined'''
     def json(self):
         raise NotImplementedError
         
@@ -29,6 +28,7 @@ class JSONSerializable:
 #   7.added_on: when was it added?
 ##############################################################################
 class Device(Base, JSONSerializable):
+    '''defines the table  mapping for the devices table'''
     __tablename__ = 'device'
 
     id = Column(Integer, primary_key=True)
@@ -41,6 +41,7 @@ class Device(Base, JSONSerializable):
     data = relationship("Log")
 
     def __init__(self, type, description, device_id):
+        '''initialize the current row with certain set of values, specifically the type, description and device id'''
         self.type = type
         self.description = description
         self.device_id = device_id
@@ -49,6 +50,7 @@ class Device(Base, JSONSerializable):
         return "<Device(id:%s, type:%s, device_id:%s, added on:%s)>" % (str(self.id), self.type, self.device_id, str(self.added_on))
 
     def add_value(self, value):
+        '''adds the passed in value to the associated device's log this way there is no need for us to even touch the log table'''
         log_row = Log(value, self.id)
 
         self.last_update = log_row.timestamp
@@ -58,13 +60,27 @@ class Device(Base, JSONSerializable):
         session.add(log_row)
         session.commit()
         session.close()
+        return True
 
-    def get_values(self, n):
-    #returns last n values
+    def add_values(self, values):
+        ''' same function as add_value just the difference is that you can add multiple values using this function'''
+        #this function can be optimized, currently each values is inserted individually SQLAlchemy API supports inserting many at a time
+        if type(values) != list:
+            return False
+        for each in values:
+            if not add_value(each):
+                return False
+        return True
+
+    def get_values(self, n=0):
+        '''the function is used to paginate the data from the log table of the relevant device
+        n is the page number of the values you want returns the value of page 0 by default'''
+        #we could define set of default values per page for each deivce based on the device
         session = Backend.instance().get_session()
         session.query
 
     def json(self):
+        '''just a json wrapper function for the table row'''
         return {
             'id':self.id,
             'type':self.type,
@@ -95,11 +111,13 @@ class Log(Base, JSONSerializable):
 
 
     def __init__(self, value, device_id):
+        '''initialize the row in log table with value and device id'''
+        #never expect the user to directly call this function, the add_value function in devices class should be the only place this is called from
         self.device_id = device_id
         self.value = value
 
     def __repr__(self):
-        return "<Log(id:%s, device_id:%s, value:%s, timestamp%s)>" % (str(self.id),str(device_id), value, str(timestamp))
+        return "<Log(id:%s, device_id:%s, value:%s, timestamp%s)>" % (str(self.id),str(self.device_id), self.value, str(self.timestamp))
         
     def json(self):
         return {
@@ -110,12 +128,14 @@ class Log(Base, JSONSerializable):
         }
 
     def val_json(self):
+        '''custom json wrapper that just returns the value and timestamp in dict format'''
         return {
             'value':self.value,
             'timestamp':self.timestamp
         }
 
 class Backend(object):
+    ''' this class takes care of the the SQLAlchemy overhead to talk with the data base'''
     def __init__(self):
         global DB_ECHO
         engine = create_engine('mysql://etho_g:pass@127.0.0.1:3306/etho_db', echo=DB_ECHO, pool_recycle=3600)
@@ -123,14 +143,17 @@ class Backend(object):
 
     @classmethod
     def instance(cls):
+        '''call this function to get an instance of this class, have many instances lying around is not a good idea'''
         if not hasattr(cls, "_instance"):
             cls._instance = cls()
         return cls._instance
 
     def get_session(self):
+        '''returns the active session of the engine'''
         return self._session()
 
 metadata = Base.metadata
 def create_all():
+    '''call this only once in the starting to create the tables in the database'''
     engine = create_engine('mysql://etho_g:pass@127.0.0.1:3306/etho_db', echo=False, pool_recycle=3600)
     metadata.create_all(engine)
