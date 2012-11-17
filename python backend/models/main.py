@@ -55,8 +55,7 @@ class Device(Base, JSONSerializable):
         '''adds the passed in value to the associated device's log this way there is no need for us to even touch the log table'''
 
         #sanity check
-        if type(value) != str:
-            return False
+        value = str(value)
 
         #if self is not assigned id yet then this can generate exception
         try:
@@ -90,14 +89,26 @@ class Device(Base, JSONSerializable):
         page is the page number of the values you want returns the value of page 0 by default'''
         #we could define set of default values per page for each deivce based on the device
         if page < 0: return []
-        values_per_page = 1
+        values_per_page = 4
         all_values = self.get_all_values()
         
-        #sanity check to make sure that page values don't go over what is there in the store
-        if page*values_per_page > len(all_values):
-            return []
+        start = page*values_per_page
 
-        ret_vals = all_values[0+1*page,0+1*page+values_per_page]
+        #sanity check to make sure that page values don't go over what is there in the store
+        if (page+1)*values_per_page > len(all_values):
+            if (page)*values_per_page > len(all_values):
+                return []
+            else:
+                end = start+(len(all_values)%values_per_page)
+        else:
+            end = start+values_per_page        
+
+        print start,end, len(all_values), page
+        ret_vals = []
+
+        for each in range(start,end):
+            ret_vals.append(all_values[each].val_json())
+
         return ret_vals
 
     def get_all_values(self):
