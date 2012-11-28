@@ -13,10 +13,10 @@ class JSONSerializable:
     '''just for safety, although the only two tables in this file has the json function defined'''
     def json(self):
         raise NotImplementedError
-        
+
 
 #############################################################################
-# Table 1:                              
+# Table 1:
 #   Name: device_table
 #   Fields:
 #   1.id: Unique db_id
@@ -36,20 +36,20 @@ class Device(Base, JSONSerializable):
     id = Column(Integer, primary_key=True)
     type = Column(String(40))
     description = Column(Text)
-    device_id = Column(String(40), unique=True)
+    hardware_id = Column(String(40), unique=True)
     current_val = Column(String(40))
     last_update = Column(DateTime)
     added_on = Column(DateTime, default=func.now())
     data = relationship("Log")
 
-    def __init__(self, type, description, device_id):
+    def __init__(self, type, description, hardware_id):
         '''initialize the current row with certain set of values, specifically the type, description and device id'''
         self.type = type
         self.description = description
-        self.device_id = device_id
+        self.hardware_id = hardware_id
 
     def __repr__(self):
-        return "<Device(id:%s, type:%s, device_id:%s, added on:%s)>" % (str(self.id), self.type, self.device_id, str(self.added_on))
+        return "<Device(id:%s, type:%s, hardware_id:%s, added on:%s)>" % (str(self.id), self.type, self.hardware_id, str(self.added_on))
 
     def add_value(self, value):
         '''adds the passed in value to the associated device's log this way there is no need for us to even touch the log table'''
@@ -91,7 +91,7 @@ class Device(Base, JSONSerializable):
         if page < 0: return []
         values_per_page = 4
         all_values = self.get_all_values()
-        
+
         start = page*values_per_page
 
         #sanity check to make sure that page values don't go over what is there in the store
@@ -101,7 +101,7 @@ class Device(Base, JSONSerializable):
             else:
                 end = start+(len(all_values)%values_per_page)
         else:
-            end = start+values_per_page        
+            end = start+values_per_page
 
         print start,end, len(all_values), page
         ret_vals = []
@@ -115,7 +115,7 @@ class Device(Base, JSONSerializable):
         #query the db to get all the values
         session = Backend.instance().get_session()
         try:
-            query = session.query(Log).filter(Log.device_id == self.id)
+            query = session.query(Log).filter(Log.hardware_id == self.id)
             values = query.all()
         except:
             return []
@@ -127,7 +127,7 @@ class Device(Base, JSONSerializable):
             'id':self.id,
             'type':self.type,
             'description': self.description,
-            'device_id':self.device_id,
+            'hardware_id':self.hardware_id,
             'current_val':self.current_val,
             'last_update':str(self.last_update),
             'added_on':str(self.added_on)
@@ -139,32 +139,32 @@ class Device(Base, JSONSerializable):
 #   Name: log_table
 #   Fields
 #   id: unique db_id
-#   device_id: foreign key to the above table
+#   hardware_id: foreign key to the above table
 #   timestamp: time stamp of this value
-#   value: value of the device 
+#   value: value of the device
 ##############################################################################
 class Log(Base, JSONSerializable):
     __tablename__ = 'log'
 
     id = Column(Integer, primary_key=True)
-    device_id = Column(Integer, ForeignKey('device.id'))
+    hardware_id = Column(Integer, ForeignKey('device.id'))
     timestamp = Column(DateTime, default = func.now())
     value = Column(String(40))
 
 
-    def __init__(self, value, device_id):
+    def __init__(self, value, hardware_id):
         '''initialize the row in log table with value and device id'''
         #never expect the user to directly call this function, the add_value function in devices class should be the only place this is called from
-        self.device_id = device_id
+        self.hardware_id = hardware_id
         self.value = value
 
     def __repr__(self):
-        return "<Log(id:%s, device_id:%s, value:%s, timestamp%s)>" % (str(self.id),str(self.device_id), self.value, str(self.timestamp))
-        
+        return "<Log(id:%s, hardware_id:%s, value:%s, timestamp%s)>" % (str(self.id),str(self.hardware_id), self.value, str(self.timestamp))
+
     def json(self):
         return {
             'id':self.id,
-            'device_id':str(self.device_id),
+            'hardware_id':str(self.hardware_id),
             'timestamp':str(self.timestamp),
             'value': self.value
         }

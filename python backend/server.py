@@ -12,13 +12,14 @@ import os
 import logging
 
 from tornado.escape import json_encode, json_decode, xhtml_escape
-from tornadio2 import SocketConnection, TornadioRouter, SocketServer, event, gen
+from tornadio2 import SocketConnection, TornadioRouter, event
 
 from tornado.options import define, options
 define("port", default=8000, help="run on the given port", type=int)
 define("address", default="0.0.0.0", help="run on the given port", type=int)
-define("miniserver_address", default="192.168.88.10", help="this is the port where the miniserver is running", type=int)
-define("debug", default=0, help="setdebug option 0= false, 1 = true(default)", type=int)
+define("miniserver_address", default="192.168.88.10", help="this is the port \
+where the miniserver is running", type=int)
+define("debug", default=1, help="setdebug option 0= false, 1 = true(default)", type=int)
 
 
 class SocketIOHandler(tornado.web.RequestHandler):
@@ -32,12 +33,15 @@ class IndexHandler(tornado.web.RequestHandler):
 class ToggleSample(tornado.web.RequestHandler):
     def get(self):
         client = tornado.httpclient.HTTPClient()
-        req = tornado.httpclient.HTTPRequest('http://admin:admin@'+options.miniserver_address+'/dev/sps/io/BreadButton2/On',method="GET")
+        req = tornado.httpclient.HTTPRequest('http://admin:admin@'+options.miniserver_address
+        +'/dev/sps/io/BreadButton2/On',method="GET")
         response = client.fetch(req)
         logging.error(response)
         time.sleep(0.05)
-        req = tornado.httpclient.HTTPRequest('http://admin:admin@'+options.miniserver_address+'/dev/sps/io/BreadButton2/Off',method="GET")
-        response = client.fetch(req)  
+        req = tornado.httpclient.HTTPRequest('http://admin:admin@'\
+        +options.miniserver_address+'/dev/sps/io/BreadButton2/Off',\
+        method="GET")
+        response = client.fetch(req)
         logging.error(response)
         self.write(str(response))
 
@@ -70,6 +74,18 @@ class RootSocketConnection(SocketConnection):
     @event('event_1')
     def event_1_handler(self, arg1, arg2):
         self.emit('return_event', arg1, arg2)
+
+    @event('batch')
+    def batch_reqs_handler(self,json_obj):
+        print type(json_decode(json_obj))
+        self.get_req_handler(json_obj)
+        self.get_req_handler(json_obj)
+
+    @event('get')
+    def get_req_handler(self, json_obj):
+        obj = json_decode(json_obj)
+        self.emit('test',obj)
+
 
 
 class Application(tornado.web.Application):
