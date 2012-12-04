@@ -1,0 +1,64 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	overflow: hidden;
+}
+body{
+font-family: 'Telex', sans-serif;
+height:100%;
+width:100%;
+background-color: #DDD;
+}
+#body-wrapper{
+    width: 100%;
+    height: 100%
+}
+
+#tabs-holder{
+    position: absolute;
+    top:0px;
+    left:0px;
+    width:10%;
+    height:100%;
+}
+#main-content{
+    position:absolute;
+    top:0px;
+    left:10%;
+}
+.icon-holder{
+    height:100%;
+    width:100%;
+}
+#hvac-icon > .icon-holder{
+    background: url('images/portalButt.png') -107px -8px no-repeat;
+
+}
+#rsrc-icon > .icon-holder{
+    background: url('images/portalButt.png') -190px -8px no-repeat;
+}
+#lighting-icon > .icon-holder{
+    background: url('images/portalButt.png') -375px -8px no-repeat;
+}
+.active.tab-icon{
+    height:40%;
+    background-color: #DDD;
+}
+.tab-icon{
+    border-bottom:solid 1px grey;
+    height:20%;
+    word-wrap:break-word;
+    background-color: #FFF;
+}
+.active.tab-content{
+    visibility: visible;
+    position: relative;
+
+}
+.tab-content{
+    visibility: hidden;
+    position: absolute;
+    top:0px;
+    right:0px;
+    z-index: -1;
+}

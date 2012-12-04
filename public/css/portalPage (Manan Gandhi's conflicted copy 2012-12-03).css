@@ -6,8 +6,8 @@
  */
 #portal { width:1024px; height:768px; }
 .steelGradient { -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), color-stop(0.45,rgba(0,0,0,1)), to(rgba(0,0,0,0.2))); }
-#portalLogo { background: url(../images/logo3.jpg) no-repeat; background-size: 90px 90px; background-position:center; padding:20px 0 20px 0; margin:5px 0 -5px 0;}
-#portalAltn { height:80px; background: url(../images/logo3.jpg) no-repeat; background-position:center; padding:10px 0 10px 0; margin:20px 0 -5px 0;}
+#portalLogo { height:80px; background: url(../images/logo3.png) no-repeat; background-position:center; padding:10px 0 10px 0; margin:5px 0 -5px 0;}
+#portalAltn { height:80px; background: url(../images/logo3.png) no-repeat; background-position:center; padding:10px 0 10px 0; margin:20px 0 -5px 0;}
 .portalView { position:absolute; }
 .inactive { display:none; }
 .floatRight { float:right; }

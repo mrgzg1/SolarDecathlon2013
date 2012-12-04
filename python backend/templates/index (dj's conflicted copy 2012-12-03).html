@@ -1,0 +1,52 @@
+<html>
+<head>
+	<title>Sample On/Off Demo</title>
+	<script src="/socket.io.js"></script>
+	<script src="{{ static_url("jquery-min.js") }}"></script>
+</head>
+<body>
+	<div id='toogle_light' style="border:1px solid black;">
+		<h3>Toggle the Light from here:</h3>
+		<button id="toggle">Toggle Light</button></br></br>
+		Current State: <span id="light_status">Error</span><br/>
+		<br/>Toggle Result:
+		<ul id="success"></ul>
+		Toggle Error:
+		<ul id="error"></ul>
+	</div>
+
+	<div id='console' style="border:1px solid black;">
+		<h3>Echo console:</h3>
+		<ul id="error"></ul>
+	</div>
+
+
+	<script type="text/javascript">
+	var btn = $('#toggle');
+	btn.on('click',function(){
+		console.log('click');
+		$.ajax({
+			url:"/toggleSample",
+			success:function(data){
+				$('#success').append('<li>'+data+'</li>');
+			},
+			error:function(data){
+				$('#error').append('<li>'+data+'</li>');
+			}
+		});
+	});
+	</script>
+
+	<script type="text/javascript">
+	var sock = io.connect('/')
+	sock.on('echo',function(data){
+		$('#console #error').append('<li>'+data+'</li>');
+	});
+	sock.on('test',function(data){
+		console.log(data);
+	});
+	</script>
+
+
+</body>
+</html>

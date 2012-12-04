@@ -1,0 +1,26 @@
+{
+  "mainFile": "D:/Dropbox/Workspace/SolarDecathlon2013/python backend/server.py", 
+  "venv": "", 
+  "relatedProjects": [], 
+  "name": "python backend", 
+  "license": "", 
+  "url": "", 
+  "pythonPath": "python", 
+  "preExecScript": "", 
+  "programParams": "", 
+  "PYTHONPATH": "", 
+  "supported-extensions": [
+    ".py", 
+    ".html", 
+    ".jpg", 
+    ".png", 
+    ".ui", 
+    ".css", 
+    ".json", 
+    ".js", 
+    ".ini"
+  ], 
+  "project-type": "", 
+  "postExecScript": "", 
+  "description": ""
+}

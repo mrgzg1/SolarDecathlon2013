@@ -6,16 +6,16 @@ var floorplan = {
 		this.drawFloorPlan1();
 	},
 	drawFloorPlan1:function(){
-		var  paper = new Raphael(document.getElementById("holder"), 520, 730); 
+		var  paper = new Raphael(document.getElementById("holder"), 465, 730); 
 
 		var scale_x = scale_y = 100; //change this to scale the plan
 		var disp_x = disp_y = 10;
-		/*var outerWalls = paper.path('M '+(0*scale_x+disp_x)+' '+(0*scale_y+disp_y)+' \
+		var outerWalls = paper.path('M '+(0*scale_x+disp_x)+' '+(0*scale_y+disp_y)+' \
 			L '+(0*scale_x+disp_x)+' '+(1*scale_y+disp_y)+' \
 			L '+(1*scale_x+disp_x)+' '+(1*scale_y+disp_y)+' \
 			L '+(1*scale_x+disp_x)+' '+(0*scale_y+disp_y)+' \
-			L '+(0*scale_x+disp_x)+' '+(0*scale_y+disp_y));*/
-		var outerWalls =   paper.path('\
+			L '+(0*scale_x+disp_x)+' '+(0*scale_y+disp_y));
+		/*var outerWalls =   paper.path('\
 			M 185 27 L 185 179 \
                         L 220 179 L 220 176 \
                         L 200 176 L 200 27  \
@@ -226,7 +226,7 @@ var floorplan = {
                         L 220 178 \
 			\
 			').attr({fill:'45-#1a1a1a-#333:25-#555:50-#333:75-#1a1a1a','fill-opacity':'1', 'stroke':'#d9d9d9','stroke-width':'2','stroke-opacity':'0.4'});
-		
+		*/
 	
 	} ,
 	drawFloorPlan:function() {

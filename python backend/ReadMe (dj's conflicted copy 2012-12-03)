@@ -1,0 +1,1 @@
+Just a sample proof of concept to use Python for the backend. Currently it takes command from the client and mirrors the request to the loxone server.

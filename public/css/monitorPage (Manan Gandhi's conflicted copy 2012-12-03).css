@@ -34,24 +34,24 @@
 
 .category:click { background-position-y:bottom;}
 .category:hover { background-position-y:bottom;}
-.device { border-radius:20px; width:20px; height:20px; position:absolute;}
+.device { border-radius:35px; width:35px; height:35px; position:absolute;}
 .inUse { -webkit-box-shadow:0 0 5px #111; background:-webkit-gradient(linear, left top, right bottom, from(rgba(0,255,0,1)), to(rgba(0,0,0,0.4)));}
 .inUse:hover { border:solid 1px #000; -webkit-box-shadow:0 0 15px #eee; }
 .off { -webkit-box-shadow:0 0 5px #111; background:-webkit-gradient(linear, left top, right bottom, from(rgba(90,90,90,1)), to(rgba(0,0,0,0.4)));}
 .deviceSelected { -webkit-box-shadow:0 0 15px #eee; }
 
-#d0000 { top:180px; left:250px; }
+#d0000 { top:22px; 	left:38px; }
 #d0001 { top:252px; left:38px; }
 #d0002 { top:537px; left:433px; }
 #d0003 { top:232px; left:128px; }
 #d0004 { top:282px; left:128px; }
-#d0005 { top:400px; left:38px; }
+#d0005 { top:435px; left:38px; }
 #d0006 { top:423px; left:408px; }
 #d0007 { top:212px; left:38px; }
-#d0008 { top:492px; left:130px; }
+#d0008 { top:497px; left:130px; }
 #d0009 { top:377px; left:330px; }
 #d0010 { top:182px; left:128px; }
-#d0011 { top:422px; left:250px; }
+#d0011 { top:422px; left:330px; }
 #d0012 { top:562px; left:218px; }
 #d0013 { top:607px; left:358px; }
 #d0014 { top:62px; left:128px; }
