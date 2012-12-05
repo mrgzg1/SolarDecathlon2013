@@ -21,3 +21,6 @@ function rsrcCtrl($scope){
 function lightingCtrl($scope){
 
 }
+function logoCtrl($scope){
+
+}
