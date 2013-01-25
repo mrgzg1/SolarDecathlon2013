@@ -1,0 +1,64 @@
+<water-ui>
+	<div id="waterchartholder" style="background-color: {{palettes[currentcolorpalette].swatch[0]}};">
+		<h3 class="subheader" ng-class="curLanguage">{{water.text[0][curLanguage]}}</h3>
+		<div id="waterchartdetail"></div>
+		<div id="waterchartmaster"></div>
+	</div>
+	<div id="watercontrol" style="background-color: {{palettes[currentcolorpalette].swatch[1]}};">
+		<h3 class="subheader" ng-class="curLanguage" >{{water.text[1][curLanguage]}}</h3>
+		<div id="tankslider"></div>
+		<button id="theflusher" style="background-color: {{palettes[currentcolorpalette].swatch[4]}};">{{water.text[11][curLanguage]}}</button>
+	</div>	
+	<div class="waterdata" style="background-color: {{palettes[currentcolorpalette].swatch[2]}};">
+		<table id="averagewater" class="waterstats" ng-class="curLanguage">
+			<th>{{water.text[2][curLanguage]}}</th>
+			<tr>
+				<td>{{water.text[4][curLanguage]}}</td>
+				<td>{{consumption | average:graph | unit:water.text[9][curLanguage] }}</td>
+			</tr>
+			<tr>
+				<td>{{water.text[5][curLanguage]}}</td>
+				<td>{{recycled | average:graph | unit:water.text[9][curLanguage]  }}</td>
+			</tr>
+			<tr>
+				<td>{{water.text[6][curLanguage]}}</td>
+				<td>{{flushed | average:graph | unit:water.text[9][curLanguage]  }} </td>
+			</tr>
+			<tr>
+				<td>{{water.text[7][curLanguage]}}</td>
+				<td>{{used | average:graph | unit:water.text[9][curLanguage]  }}</td>
+			</tr>
+			<tr>
+				<td>{{water.text[8][curLanguage]}}</td>
+				<td>{{ water.data | average:graph | unit:'%' }}</td>
+			</tr>
+		</table>
+	</div>	
+	<div class="waterdata" style="background-color: {{palettes[currentcolorpalette].swatch[2]}};">
+		<table id="todaywater" class="waterstats" ng-class="curLanguage">
+			<th>{{water.text[3][curLanguage]}}</th>
+			<tr>
+				<td>{{water.text[4][curLanguage]}}</td>
+				<td>{{consumption[0] | unit:water.text[9][curLanguage] }}</td>
+			</tr>
+			<tr>
+				<td>{{water.text[5][curLanguage]}}</td>
+				<td>{{recycled[0] | unit:water.text[9][curLanguage]  }}</td>
+			</tr>
+			<tr>
+				<td>{{water.text[6][curLanguage]}}</td>
+				<td>{{flushed[0] | unit:water.text[9][curLanguage]  }} </td>
+			</tr>
+			<tr>
+				<td>{{water.text[7][curLanguage]}}</td>
+				<td>{{used[0] | unit:water.text[9][curLanguage]  }}</td>
+			</tr>
+			<tr>
+				<td>{{water.text[8][curLanguage]}}</td>
+				<td>{{ water.data[0] | unit:'%' }}</td>
+			</tr>
+		</table>
+	</div>
+</water-ui>
+<link href="CSS/water.css" rel="stylesheet" type="text/css">
+                            

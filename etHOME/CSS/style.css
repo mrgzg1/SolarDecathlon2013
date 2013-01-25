@@ -1,0 +1,328 @@
+@font-face{
+    font-family: "neou";
+    src: url("../Images/neou-t.ttf");
+}
+
+/*background: -webkit-gradient(linear, left top, left bottom, from(#AF3C3C), to(#2C0606)) no-repeat center center fixed;
+        -webkit-background-size: cover;
+*/
+*{
+    margin:0;  
+}
+
+html,
+body{ 
+    height: 100%;
+    position:relative;
+    font-family: "neou";
+    color: whitesmoke;
+    -webkit-user-select: none; 
+}
+
+viewport{
+    position: relative;
+}
+
+#viewport{
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0))) no-repeat center center fixed;
+    background-image:url('../Images/background.jpeg');
+    -webkit-background-size: cover;
+    height:100%
+}
+
+h1{
+}
+
+h2{ 
+    z-index: 2;
+}
+
+#logo{
+    margin:0 0 0 10px;
+    height:50px;
+    width: 50px;
+    float:left;
+}
+
+#lighting{
+    margin:-8px 0 0 10px;
+    height:125px;
+    width: 100px;
+    float:left;
+}
+
+#weather{
+    margin:-25px 0 0 -25px;
+    height:100px;
+    width: 125px;
+    float:left;
+}
+
+#wrench{
+    margin:-22px 0 0 40px;
+    height:190px;
+    width: 210px;
+    float:left;
+    z-index: -1;
+}
+
+#englishlanguage{
+    height:50px;
+    width: 75px;
+    float:right;
+}
+
+#chineselanguage{
+    height: 50px;
+    width: 75px;
+    float:right;
+    margin-right: 10px;
+}
+
+#title{
+    width: 250px;
+    padding: 10px 0px 0px 10px;
+    margin: 0;
+    float: left;
+}
+
+#header{  
+    padding: 25px 0 0 0;
+    min-height: 60px;
+    width: 1010px;
+}
+
+#themepicker{
+    margin:20px;
+}
+
+#wrapper {
+    margin: 0 0 0 0;
+    height: 100%;
+    padding-left: 15px;
+    padding-right: 10px;  
+    overflow-y:auto;
+    width: 1015px;
+}
+
+#center {
+    width: 100%;
+}
+
+ul {
+    list-style:none;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+}
+
+#selection{
+    float:left;
+}
+
+#sidebarselection{
+    position:absolute;
+    top:0;
+    left:0;
+    width:200px;
+}
+
+#selection>li{
+    float:left;
+    display:inline;
+}
+
+#pagewrapper{
+    position: absolute;
+    top: 0;
+    right: 105px;
+    width: 800px;
+
+}
+
+.buttonholdersmall{
+    width: 333px
+}
+
+.buttonholderbig{
+    width: 333px
+}
+
+.button{
+    background-color: inherit;
+    height: 205px;
+    text-align: right;
+    margin: 0 5px 5px 0;
+    position: relative;
+}
+
+.buttoncontent{
+    position: absolute;
+    top: 18px;
+}
+
+.sidebar{
+    background-color: inherit;
+    height: 72px;
+    width: 72px;
+    margin: 0 0 7px 0;
+}
+
+.page{
+    background-color: inherit;
+    height: 625px;
+    width: 900px;
+    margin: 0px 10px 0px 0px;
+    overflow: auto;
+    position: relative;
+}
+
+.sidebarcontent{
+    float: left;
+    display:none;
+}
+
+.pagecontent{
+    position: absolute;
+    top: 15px;
+}
+
+
+.homechart{
+    margin-top: 20px;
+    height: 150px;
+    width: 300px;
+    position: absolute;
+    top: 25px;
+}
+
+#footer{
+    clear:both;
+    font-size: 10px;
+    text-align:center;
+    position:absolute;
+    bottom:0; 
+    width: 99%
+}
+
+.pageheader.english{
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+.pageheader.zhongguo{
+    padding-left: 5px;
+    padding-top: 0px;
+}
+
+#themeheader{
+    border-bottom: 1px solid whitesmoke;
+    margin: 10px 10px 0 10px;
+    
+}
+
+#swatch{
+    padding: 15px 0 0 15px;
+    
+}
+
+#swatch>li{
+   float:left; 
+   display: inline;
+   margin: 0 5px 10px 0;
+}
+
+.swatchcolor{
+    width: 50px;
+    height: 50px;
+    background-color:inherit;
+}
+
+#themepickerwrapper{
+    clear: left;
+    background: whitesmoke;
+    height:auto;
+    margin: 0 15px 0 15px;
+    display: none;
+    color:black;
+    
+}
+
+#floorplan{
+    width: 500px;
+    height:600px;
+    margin-left: 15px;
+    float:left;
+}
+
+#lightdata{
+    margin: -5px 10px 10px 10px;
+    float:right;
+    width:350px;
+    height:600px;
+}
+
+#lightcontrol{
+    position: relative;
+    margin: 10px 15px 0px 15px;
+    padding: 10px;
+    height: 350px;
+}
+
+#lightgraph{
+    width: 300px;
+    height: 200px;
+    margin: 10px 15px 0px 15px;
+    padding: 10px 10px 0px 10px;
+}
+
+#selectedlighting{
+}
+
+#illuminance{
+    position: absolute;
+    top: 35px;
+    left: 75px;
+    width: 175px;
+    height: 300px;
+    background: #CCC
+}
+
+#illuminance .ui-slider-handle {
+    width: 185px;
+}
+
+.device { 
+    border-radius:10px; 
+    width:20px; 
+    height:20px; 
+    position:relative;
+    background: white;
+}
+
+.deviceSelected { 
+    border-radius:10px; 
+    width:20px; 
+    height:20px; 
+    position:relative;
+    background: grey;
+}
+
+#d0000 { top:200px;  left:400px; }
+#d0001 { top:318px; left:410px; }
+#d0002 { top:415px; left:387px; }
+#d0003 { top:42px; left:100px; }
+#d0004 { top:241px; left:86px; }
+
+.test{
+    float:left ;
+    margin-top: 60px;
+
+}
+
+#switch{
+    margin: 30px 0 0 126px;
+}
+
+
+
+

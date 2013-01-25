@@ -1,0 +1,15 @@
+<ul id="sidebarselection"> 
+    <li ng-repeat="pane in panes | removeCurrent:curPage | orderBy:orderProp " class="buttonholdersmall" ng-click="willthiswork()">
+		<div id="{{pane.id}}" class="sidebar" style="background-color: {{palettes[currentcolorpalette].swatch[pane.index%5]}};">
+			<div class="sidebarcontent" style="display: block;">{{pane.smalltext[0][curLanguage]}}</div>
+	    </div>    
+	</li>
+</ul>
+<ul id="pagewrapper"> 
+    <li class="buttonholdersmall" style="float: none;">
+        <div id="{{panes[curPage].id}}" class="page" style="background-color: {{ palettes[currentcolorpalette].swatch[curPage%5] }}">
+        	<h2 class="pageheader" ng-class="curLanguage">{{panes[curPage][curLanguage]}}</h2>
+            <div ng-include="panes[curPage].pagecontent" class="pagecontent"></div>
+		</div>
+    </li>
+</ul>

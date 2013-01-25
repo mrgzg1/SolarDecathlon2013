@@ -1,0 +1,85 @@
+<solar-ui>
+	<div id="solarchartholder" style="background-color: {{palettes[currentcolorpalette].swatch[2]}};">
+		<h3 class="subheader" ng-class="curLanguage">{{solar.text[0][curLanguage]}}<span id="makeitred">{{solar.text[1][curLanguage]}}</span>{{solar.text[2][curLanguage]}}</h3>
+		<div id="solarchartdetail"></div>
+		<div id="solarchartmaster"></div>
+	</div>
+	<div id="solarcontrol" style="background-color: {{palettes[currentcolorpalette].swatch[3]}};">
+		<h3 class="subheader" ng-class="curLanguage" >{{solar.text[3][curLanguage]}}</h3>
+		<ul>
+			<li ng-repeat="pvarray in solar.current.pvarrays">
+			    <div id="pvarray" style="background-color: {{palettes[currentcolorpalette].swatch[4]}}">
+			    	<div id="bar" ng-style="pvarray.power*60 | height "> 
+			    		<h3 id="instantaneouspower">{{pvarray.power * 14.4 /4 | sigfig:1 }} kW</h3>
+			    	</div>
+			    </div>
+			</li>
+		</ul>
+		<table id="todaysolar" class="solarstats" ng-class="curLanguage">
+			<th>{{solar.text[14][curLanguage]}}</th>
+			<tr>
+				<td>{{solar.text[15][curLanguage]}}</td>
+				<td>{{ solar.current.power | unit:'kW' }}</td>
+			</tr>
+			<tr>
+				<td>{{solar.text[16][curLanguage]}}</td>
+				<td>{{solar.current.insolation }}</td>
+			</tr>
+			<tr>
+				<td>{{solar.text[17][curLanguage]}}</td>
+				<td>{{solar.current.sunpower | unit:'kW'  }} </td>
+			</tr>
+			<tr>
+				<td>{{solar.text[18][curLanguage]}}</td>
+				<td>{{ solar.current.power / solar.current.sunpower * 100 | sigfig:1}}%</td>
+			</tr>
+			<tr>
+				<td>{{solar.text[19][curLanguage]}}</td>
+				<td>{{ solar.current.energy| unit:'kJ' }}</td>
+			</tr>
+		</table>
+	</div>	
+	<div class="solardata" style="background-color: {{palettes[currentcolorpalette].swatch[1]}};">
+		<table id="averagesolar" class="solarstats" ng-class="curLanguage">
+			<th>{{solar.text[4][curLanguage]}}</th>
+			<tr>
+				<td>{{solar.text[5][curLanguage]}}</td>
+				<td>{{ pvPower | average:graph | unit:'kW' }}</td>
+			</tr>
+			<tr>
+				<td>{{solar.text[6][curLanguage]}}</td>
+				<td>{{ pvPower | max:graph | unit:'kW'  }}</td>
+			</tr>
+			<tr>
+				<td>{{solar.text[7][curLanguage]}}</td>
+				<td>{{ pvEnergy | average:graph | unit:'kJ'  }} </td>
+			</tr>
+			<tr>
+				<td>{{solar.text[8][curLanguage]}}</td>
+				<td>{{ effeciency | average:graph | times:100 | sigfig:2 }}%</td>
+			</tr>
+		</table>
+	</div>	
+	<div class="solardata" style="background-color: {{palettes[currentcolorpalette].swatch[1]}};">
+		<table id="averagesolar" class="solarstats" ng-class="curLanguage">
+			<th>{{solar.text[9][curLanguage]}}</th>
+			<tr>
+				<td>{{solar.text[10][curLanguage]}}</td>
+				<td>{{ insolation | average:graph  | unit:'kW' }}</td>
+			</tr>
+			<tr>
+				<td>{{solar.text[11][curLanguage]}}</td>
+				<td>{{ solarPower | average:graph  | unit:'kW'  }}</td>
+			</tr>
+			<tr>
+				<td>{{solar.text[12][curLanguage]}}</td>
+				<td>{{ solarEnergy | average:graph | unit:'kJ'  }} </td>
+			</tr>
+			<tr>
+				<td>{{solar.text[13][curLanguage]}}</td>
+				<td>{{ insolation | max:graph | unit:'' }}</td>
+			</tr>
+		</table>
+	</div>
+</solar-ui>
+<link href="CSS/solar.css" rel="stylesheet" type="text/css">

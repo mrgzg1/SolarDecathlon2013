@@ -1,0 +1,113 @@
+solar-ui{
+	position: relative;
+	width: inherit;
+	height: inherit;
+}
+
+.subheader.zhongguo{
+	padding: 0px 0px 0px 5px;
+}
+
+.subheader.english{
+	padding: 5px 0 0 5px;
+}
+
+#makeitred{
+	color: rgb(151, 23, 23);
+}
+
+#solarchartholder{
+	width: 650px;
+	height: 400px;
+	margin: 20px 0 0 15px;
+	float: left;
+	background: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,1)), to(rgba(0,0,0,0))) no-repeat center center fixed;
+}
+
+#solarchartdetail{
+	position: absolute;
+	top: 60px;
+	width: 630px;
+	height: 295px;
+	left: 15px;
+}
+
+#solarchartmaster{
+	position: absolute;
+	top: 340px;
+	width: 630px;
+	height: 75px;
+	left: 15px;
+}
+
+#solarcontrol{
+	position: relative;
+	margin: 20px 20px 0px 0px;
+	float: right;
+	width: 200px;
+	height: 565px;
+}
+
+.solardata{
+	width: 318px;
+	height: 150px;
+	margin: 15px 0 0 15px;
+	float: left;
+}
+
+#pvarray{
+	position: relative;
+	width: 180px;
+	height: 67px;
+	margin: 0 0 9px 10px;
+}
+
+#bar{
+	position: absolute;
+	width: 180px;
+	bottom: 0px;
+	height: 20px;
+	background-color: rgb(231, 231, 7);
+	color: black;
+}
+
+#instantaneouspower{
+	position: absolute;
+	bottom: 0px;
+	left: 5px;
+}
+
+#solarstats th{
+	font-size: 20px
+}
+
+#todaysolar{
+	position: absolute;
+	bottom: 5px
+}
+
+#todaysolar th{
+	color: black;
+	font-size: 24px;
+}
+
+.solarstats{
+	padding: 5px;
+	float:left;
+	width:inherit;
+}
+
+.solarstats th{
+	margin-bottom: 7px
+}
+
+td:last-child{
+	text-align: right;
+}
+
+.zhongguo td{
+	font-size: 12px
+}
+
+.english td{
+}

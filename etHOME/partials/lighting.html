@@ -1,0 +1,13 @@
+<lighting-ui>
+    <div id="floorplan"></div>
+    <div id="lightdata">
+        <div id="lightcontrol" style="background-color: {{palettes[currentcolorpalette].swatch[4]}};">
+            <h3 id="selectedlighting">{{ lightObjects[curObject].name[curLanguage] }}</h3>
+            <div id="illuminance">
+                <!-- <input id="illuminanceselector" type="range" ng:model="lightObjects[curObject].current" /> -->
+            </div> 
+        </div>
+        <div id="lightgraph" style="background-color: {{palettes[currentcolorpalette].swatch[3]}};">
+        </div>
+    </div> 
+</lighting-ui>   

@@ -1,0 +1,8 @@
+<ul id="selection">
+    <li ng-repeat="pane in panes | orderBy:orderProp" class="buttonholdersmall" ng-click="willthiswork()">
+        <div id="{{pane.id}}" class="button" style="background-color: {{palettes[currentcolorpalette].swatch[pane.index%5]}};" >
+            	<h2>{{ pane[curLanguage] }}</h2>
+                <div ng-include="pane.buttoncontent" class="buttoncontent" onload="chartgraphs()"></div>
+        </div>
+    </li> 
+</ul>

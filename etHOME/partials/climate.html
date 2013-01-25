@@ -1,0 +1,62 @@
+<climate-ui>
+	<div id="climatechartholder" style="background-color: {{palettes[currentcolorpalette].swatch[3]}};">
+		<h3 class="subheader" ng-class="curLanguage">{{climate.text[10][curLanguage]}}<span id="makeitred">{{climate.text[11][curLanguage]}}</span>{{climate.text[0][curLanguage]}}</h3>
+		<div id="climatechartdetail"></div>
+		<div id="climatechartmaster"></div>
+	</div>
+	<div id="climatecontrol" style="background-color: {{palettes[currentcolorpalette].swatch[4]}};">
+		<h3 class="subheader" ng-class="curLanguage" >{{climate.text[1][curLanguage]}}</h3>
+		<div id="thermostatslider"></div>
+	</div>	
+	<div class="climatedata" style="background-color: {{palettes[currentcolorpalette].swatch[2]}};">
+		<table id="averageclimate" class="climatestats" ng-class="curLanguage">
+			<th>{{climate.text[2][curLanguage]}}</th>
+			<tr>
+				<td>{{climate.text[4][curLanguage]}}</td>
+				<td>{{ indoor | average:graph | celcius:curLanguage | unit:climate.text[9][curLanguage] }}</td>
+			</tr>
+			<tr>
+				<td>{{climate.text[5][curLanguage]}}</td>
+				<td>{{ outdoor | average:graph | celcius:curLanguage | unit:climate.text[9][curLanguage]  }}</td>
+			</tr>
+			<tr>
+				<td>{{climate.text[6][curLanguage]}}</td>
+				<td>{{ heating | average:graph | unit:'kJ'  }} </td>
+			</tr>
+			<tr>
+				<td>{{climate.text[7][curLanguage]}}</td>
+				<td>{{ cooling | average:graph | unit:'kJ'  }}</td>
+			</tr>
+			<tr>
+				<td>{{climate.text[8][curLanguage]}}</td>
+				<td>{{ recycled | average:graph | unit:'kJ' }}</td>
+			</tr>
+		</table>
+	</div>	
+	<div class="climatedata" style="background-color: {{palettes[currentcolorpalette].swatch[2]}};">
+		<table id="todayclimate" class="climatestats" ng-class="curLanguage">
+			<th>{{climate.text[3][curLanguage]}}</th>
+			<tr>
+				<td>{{climate.text[4][curLanguage]}}</td>
+				<td>{{indoor[0] | unit:climate.text[9][curLanguage] }}</td>
+			</tr>
+			<tr>
+				<td>{{climate.text[5][curLanguage]}}</td>
+				<td>{{outdoor[0] | unit:climate.text[9][curLanguage]  }}</td>
+			</tr>
+			<tr>
+				<td>{{climate.text[6][curLanguage]}}</td>
+				<td>{{heating[0] | unit:climate.text[9][curLanguage]  }} </td>
+			</tr>
+			<tr>
+				<td>{{climate.text[7][curLanguage]}}</td>
+				<td>{{cooling[0] | unit:climate.text[9][curLanguage]  }}</td>
+			</tr>
+			<tr>
+				<td>{{climate.text[8][curLanguage]}}</td>
+				<td>{{ recycled[0] | unit:'kJ' }}</td>
+			</tr>
+		</table>
+	</div>
+</climate-ui>
+<link href="CSS/climate.css" rel="stylesheet" type="text/css">

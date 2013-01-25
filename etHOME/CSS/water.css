@@ -1,0 +1,112 @@
+water-ui{
+	position: relative;
+	width: inherit;
+	height: inherit;
+}
+
+.subheader.zhongguo{
+	padding: 0px 0px 0px 5px;
+}
+
+.subheader.english{
+	padding: 5px 0 0 5px;
+}
+
+#waterchartholder{
+	width: 650px;
+	height: 400px;
+	margin: 20px 0 0 15px;
+	float: left;
+	background: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,1)), to(rgba(0,0,0,0))) no-repeat center center fixed;
+}
+
+#waterchartdetail{
+	position: absolute;
+	top: 60px;
+	width: 630px;
+	height: 295px;
+	left: 15px;
+}
+
+#waterchartmaster{
+	position: absolute;
+	top: 340px;
+	width: 630px;
+	height: 75px;
+	left: 15px;
+}
+
+#watercontrol{
+	position: relative;
+	margin: 20px 20px 0px 0px;
+	float: right;
+	width: 200px;
+	height: 565px;
+}
+
+.waterdata{
+	width: 318px;
+	height: 150px;
+	margin: 15px 0 0 15px;
+	float: left;
+}
+
+#tankslider{
+	border-radius: 0px;
+    position: absolute;
+	top: 35px;
+	left: 35px;
+	width: 130px;
+	height: 365px;
+	background: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0)), to(rgba(0,0,0,1))) no-repeat center center fixed;
+}
+
+#tankslider .ui-slider-handle {
+   	width: 140px;
+	height: 5px;
+	margin: 0px 0px 0px 0px;
+	border-radius: 0px;
+}
+
+#tankslider .ui-widget-header{
+	background: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,1)), to(rgba(0,0,0,0))) no-repeat center center fixed;
+    background-color: #04BCE4;
+}
+
+#theflusher{
+	position: absolute;
+	top: 415px;
+	left: 35px;
+	width: 133px;
+	height: 133px;
+	font-family: "neou";
+	font-size: 20px
+}
+
+#averagewater{
+
+}
+
+#todaywater{
+}
+
+.waterstats{
+	padding: 5px;
+	float:left;
+	width:inherit;
+}
+
+.waterstats th{
+	margin-bottom: 7px
+}
+
+td:last-child{
+	text-align: right;
+}
+
+.zhongguo td{
+	font-size: 12px
+}
+
+.english td{
+}

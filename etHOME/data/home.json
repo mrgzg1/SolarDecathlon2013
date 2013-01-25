@@ -1,0 +1,146 @@
+[
+    {
+        "index": 0, 
+        "id": "HVAC", 
+        "english": "Climate Controls", 
+        "zhongguo": "气候控制", 
+        "pagecontent": "partials/climate.html",
+        "smalltext": [
+            {
+                "english": "HVAC",
+                "zhongguo": "气候控制"
+            }
+        ],
+        "buttoncontent": "partials/climatebutton.html",
+        "graphx":[
+            {
+                "english": "Temperature(°F)",
+                "zhongguo": "温度(°F)"
+            }
+        ]
+    },
+    {
+        "index": 1, 
+        "id": "Lights", 
+        "english": "Lights", 
+        "zhongguo": "灯火",
+        "smalltext": [
+            {
+                "english": "Lights",
+                "zhongguo": "灯火"
+            }
+        ], 
+        "pagecontent": "partials/lighting.html",
+        "buttoncontent": "partials/lightingbutton.html"
+    },
+    {
+        "index": 2, 
+        "id": "Blinds", 
+        "english": "Blinds", 
+        "zhongguo": "窗帘",
+        "smalltext": [
+            {
+                "english": "Blinds",
+                "zhongguo": "窗帘"
+            }
+        ], 
+        "pagecontent": "partials/blinds.html",
+        "buttoncontent": "partials/blindsbutton.html"
+    },
+    {
+        "index": 3, 
+        "id": "GreyWater", 
+        "english": "Grey Water", 
+        "zhongguo": "灰水",
+        "smalltext": [
+            {
+                "english": "Water",
+                "zhongguo": "灰水"
+            }
+        ], 
+        "pagecontent": "partials/water.html",
+        "buttoncontent": "partials/waterbutton.html"
+    },
+    {
+        "index": 4, 
+        "id": "Entertainment", 
+        "english": "Entertainment", 
+        "zhongguo": "娱乐",
+        "smalltext": [
+            {
+                "english": "Enter tain ment",
+                "zhongguo": "娱乐"
+            }
+        ], 
+        "pagecontent": "partials/media.html",
+        "buttoncontent": "partials/mediabutton.html"    
+    },
+    {
+        "index": 5, 
+        "id": "SolarProduction", 
+        "english": "Solar Production", 
+        "zhongguo": "太阳能电池生产",
+        "smalltext": [
+            {
+                "english": "Solar",
+                "zhongguo": "太阳能电池生产"
+            }
+        ], 
+        "pagecontent": "partials/solar.html",
+        "buttoncontent": "partials/solarbutton.html",
+        "graphx":[
+            {
+                "english": "Power(kW)",
+                "zhongguo": "功率(kW)"
+            }
+        ]    
+    },
+    {
+        "index": 6, 
+        "id": "Consumption", 
+        "english": "Consumption Diagnostic", 
+        "zhongguo": "消耗诊断",
+        "smalltext": [
+            {
+                "english": "Energy",
+                "zhongguo": "消耗诊断"
+            }
+        ], 
+        "pagecontent": "partials/consumption.html",
+        "buttoncontent": "partials/consumptionbutton.html",
+        "graphx":[
+            {
+                "english": "Power(kW)",
+                "zhongguo": "功率(kW)"
+            }
+        ]     
+    },
+    {
+        "index": 7, 
+        "id": "Weather", 
+        "english": "Weather", 
+        "zhongguo": "天气",
+        "smalltext": [
+            {
+                "english": "Weath er",
+                "zhongguo": "天气"
+            }
+        ], 
+        "pagecontent": "partials/weather.html",
+        "buttoncontent": "partials/weatherbutton.html"    
+    },
+    {
+        "index": 8, 
+        "id": "Settings", 
+        "english": "Settings", 
+        "zhongguo": "设置",
+        "smalltext": [
+            {
+                "english": "Sett ings",
+                "zhongguo": "设置"
+            }
+        ], 
+        "pagecontent": "partials/settings.html",
+        "buttoncontent": "partials/settingsbutton.html"    
+    }
+]
