@@ -1,0 +1,82 @@
+/**
+ * Styling for the Solar Power Monitoring Subpage
+ * @author Daniel Mestas <dan5446@gmail.com>
+ * @netid mestas1
+ * @date Spring 2011
+ */
+
+.s1  { background: -webkit-gradient(linear, left top, right top, from(#360209), to(#400d0a)); }
+.s2  { background: -webkit-gradient(linear, left top, right top, from(#400d0a), to(#4c1c09)); }
+.s3  { background: -webkit-gradient(linear, left top, right top, from(#4c1c09), to(#5c2f08)); }
+.s4  { background: -webkit-gradient(linear, left top, right top, from(#5c2f08), to(#6c4307)); }
+.s5  { background: -webkit-gradient(linear, left top, right top, from(#6c4307), to(#7d5906)); }
+.s6  { background: -webkit-gradient(linear, left top, right top, from(#7d5906), to(#8d6f04)); }
+.s7  { background: -webkit-gradient(linear, left top, right top, from(#8d6f04), to(#9c8203)); }
+.s8  { background: -webkit-gradient(linear, left top, right top, from(#9c8203), to(#ab9502)); }
+.s9  { background: -webkit-gradient(linear, left top, right top, from(#ab9502), to(#b5a502)); }
+.s10 { background: -webkit-gradient(linear, left top, right top, from(#b5a502), to(#bdb402)); }
+.s11 { background: -webkit-gradient(linear, left top, right top, from(#bdb402), to(#c1bd02)); }
+.s12 { background: -webkit-gradient(linear, left top, right top, from(#c1bd02), to(#bcbf02)); }
+.s13 { background: -webkit-gradient(linear, left top, right top, from(#bcbf02), to(#aab905)); }
+.s14 { background: -webkit-gradient(linear, left top, right top, from(#aab905), to(#92ad08)); }
+.s15 { background: -webkit-gradient(linear, left top, right top, from(#92ad08), to(#789e0c)); }
+.s16 { background: -webkit-gradient(linear, left top, right top, from(#789e0c), to(#56890f)); }
+.s17 { background: -webkit-gradient(linear, left top, right top, from(#56890f), to(#387612)); }
+.s18 { background: -webkit-gradient(linear, left top, right top, from(#387612), to(#216815)); }
+.s19 { background: -webkit-gradient(linear, left top, right top, from(#216815), to(#146017)); }
+.s20 { background: -webkit-gradient(linear, left top, right top, from(#146017), to(#135e16)); }
+
+.sunGradient { font-weight:bold; color: #ffda00; font-size:.8em; margin-top: 5px; -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,.2))); }
+.sunColumn { width:274px; }
+.sunmode { width:240px; }
+.rightBorder { border-right: 1px solid #333; }
+.topBar { margin-bottom:5px; width:230px; font-size:.9em;text-align:left; color:#eee; border-radius:8px; padding-top:6px; padding-left:12px; padding-right:12px; padding-bottom:3px; background: -webkit-gradient(linear, center top, center bottom, from(#444), to(#111)); }
+.usageStats { padding-left:10px; font-size:0.8em;}
+.whiteText {color:#eee; font-style:bold; font-size:.8em; text-align:left; padding-left:10px;}
+.yellowText {color:#fff200; font-size:.8em; text-align:left; padding-left:10px;}
+.greenText {color:#39b54a; font-size:.8em; text-align:left; padding-left:10px;}
+.largeReading { color:#fff200; font-size:1.8em; margin-top:35px; margin-left:10px;}
+.watts { margin-top:40px; margin-left:10px; }
+#sunGraphic1, #sunGraphic2, #sunGraphic3, #sunGraphic4 {  height:380px; width:800px; }
+#sunLeftArrow { width:100px; }
+#sunRightArrow { width:100px; }
+.arrow-e,
+.arrow-w {
+  /*
+   * In Internet Explorer, The"border-style: dashed" will never be
+   * rendered unless "(width * 5) >= border-width" is true.
+   * Since "width" is set to "0", the "dashed-border" remains
+   * invisible to the user, which renders the border just like how
+   * "border-color: transparent" renders.
+   */
+  border-style: dashed;
+  border-color: transparent;
+  border-width: 0.53em;
+  display: -moz-inline-box;
+  display: inline-block;
+  /* Use font-size to control the size of the arrow. */
+  font-size: 100px;
+  height: 0;
+  line-height: 0;
+  position: relative;
+  vertical-align: middle;
+  width: 0;
+}
+
+.arrow-e {
+  border-left-width: 1em;
+  border-left-style: solid;
+  border-left-color: whiteSmoke;
+  left: -0.2em;
+  margin-top: 170px;
+  border-width: 10px;
+}
+
+.arrow-w {
+  border-right-width: 1em;
+  border-right-style: solid;
+  border-right-color: whiteSmoke;
+  right: -0.2em;
+  border-width: 10px;
+  margin-top: 170px;
+}
